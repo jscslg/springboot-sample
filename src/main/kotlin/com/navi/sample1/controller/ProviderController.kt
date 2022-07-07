@@ -56,10 +56,10 @@ class ProviderController {
     }
 
     @DeleteMapping("provider")
-    fun deleteProvider(@RequestParam("provider") providerName:String): ResponseEntity.BodyBuilder {
+    fun deleteProvider(@RequestParam("provider") providerName:String): ResponseEntity<Unit> {
         // Throw Exception if ID does not exist
         if(providerRepository.findById(providerName).isEmpty) throw ResourceNotFoundException("Provider not found with name: $providerName")
         providerRepository.deleteById(providerName)
-        return ResponseEntity.ok()
+        return ResponseEntity<Unit>(HttpStatus.NO_CONTENT)
     }
 }
