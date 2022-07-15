@@ -18,6 +18,6 @@ data class Provider (
     private val downTimeFrom: LocalDateTime,
     @Column(name = "downtime_to")
     private val downTimeTo: LocalDateTime
-){
+): java.io.Serializable{
     fun toMap():Map<String,String> = mapOf(Pair("provider",providerName),Pair("flow_name",flowName),Pair("downTimeFrom",downTimeFrom.toString()),Pair("downTimeTo",downTimeTo.toString()))
 }
